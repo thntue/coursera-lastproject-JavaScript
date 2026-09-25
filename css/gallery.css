@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Interactive Accessible Photo Gallery Stylesheet
+   Final Project: Interactivity with JavaScript (Coursera / Univ of Michigan)
+   Author: thntue
+   Accessibility Standard: WCAG 2.1 Level AAA Compliant
+   ========================================================================== */
+
+/* --- CSS Reset & Global Properties --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Skip Navigation Link (Keyboard Accessibility) --- */
+.skip-link {
+    position: absolute;
+    top: -120px;
+    left: 20px;
+    background-color: #f59e0b;
+    color: #0f172a;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 8px;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+    top: 20px;
+    outline: 4px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* --- Screen Reader Only Utility Class --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* --- Header Styling --- */
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 2px solid #334155;
+    padding: 36px 20px 28px;
+    text-align: center;
+}
+
+.header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    max-width: 750px;
+    margin: 0 auto 18px;
+}
+
+/* --- Interaction Instruction Card --- */
+.instructions-card {
+    background-color: rgba(30, 41, 59, 0.8);
+    border: 1px solid #38bdf8;
+    border-radius: 12px;
+    padding: 16px 20px;
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+kbd {
+    background-color: #334155;
+    color: #f8fafc;
+    border: 1px solid #64748b;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.85em;
+    font-family: monospace;
+    box-shadow: 0 2px 0 #1e293b;
+}
+
+/* --- Main Layout --- */
+main {
+    flex: 1;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+
+/* --- Main Image Preview Display Area (#image) --- */
+.preview-section {
+    margin-bottom: 36px;
+}
+
+#image {
+    min-height: 420px;
+    background-color: #1e293b;
+    background-image: url('');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #475569;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px;
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.6;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+/* --- Gallery Section & Thumbnails --- */
+.gallery-section {
+    margin-bottom: 32px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #f1f5f9;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 18px;
+    padding: 4px;
+}
+
+/* --- Individual Thumbnail Image (.preview) --- */
+.preview {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid #334155;
+    background-color: #1e293b;
+    cursor: pointer;
+    filter: brightness(0.9);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+/* --- Hover State (Mouse interaction) --- */
+.preview:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: #38bdf8;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+    filter: brightness(1.05);
+}
+
+/* --- Focus State (Keyboard Tab Navigation) --- */
+.preview:focus,
+.preview:focus-visible {
+    outline: 4px solid #f59e0b;
+    outline-offset: 4px;
+    border-color: #f59e0b;
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.65);
+    filter: brightness(1.08);
+}
+
+/* --- Footer Section --- */
+footer {
+    background-color: #0b1120;
+    border-top: 1px solid #1e293b;
+    padding: 32px 20px;
+    color: #94a3b8;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+footer h2 {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+}
+
+.footer-meta {
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.badge {
+    background-color: #1e293b;
+    color: #38bdf8;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    #image {
+        min-height: 320px;
+        font-size: 1.15rem;
+        padding: 20px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .preview {
+        height: 110px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #image {
+        min-height: 260px;
+        font-size: 1rem;
+    }
+}

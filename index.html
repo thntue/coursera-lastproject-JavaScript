@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Accessible Photo Gallery featuring the Wonders of Vietnam, built with HTML5, CSS3, and JavaScript by thntue for Coursera Web Design for Everybody.">
+    <meta name="author" content="thntue">
+    <title>Interactive Accessible Photo Gallery | thntue</title>
+    <link rel="stylesheet" href="css/gallery.css">
+    <script src="js/gallery.js"></script>
+</head>
+<body onload="addTabFocus()">
+    <!-- Skip to main content link for keyboard and screen-reader accessibility -->
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <h1>Wonders of Vietnam - Interactive Photo Gallery</h1>
+            <p class="subtitle">An accessible, interactive gallery exploring Vietnam's breathtaking natural landscapes and cultural heritage.</p>
+            
+            <div class="instructions-card">
+                <div class="instruction-item">
+                    <span>🖱️ <strong>Mouse Interaction:</strong> Hover over any thumbnail to preview in the main frame. Move away to reset.</span>
+                </div>
+                <div class="instruction-item">
+                    <span>⌨️ <strong>Keyboard Interaction:</strong> Press <kbd>Tab</kbd> / <kbd>Shift + Tab</kbd> to focus through images. The preview updates on focus and resets on blur.</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <!-- Interactive Preview Section -->
+        <section class="preview-section" aria-labelledby="preview-heading">
+            <h2 id="preview-heading" class="sr-only">Interactive Image Preview Display</h2>
+            <div id="image" aria-live="polite" role="region" aria-label="Large preview display">
+                Hover over an image below or use Tab to focus and display here.
+            </div>
+        </section>
+
+        <!-- Gallery Thumbnails Section -->
+        <section class="gallery-section" aria-labelledby="thumbnails-heading">
+            <h2 id="thumbnails-heading">Gallery Thumbnails</h2>
+            <div class="gallery" role="region" aria-label="Thumbnail image collection">
+                <img class="preview"
+                     src="images/halong_bay.jpg"
+                     alt="Ha Long Bay featuring iconic limestone islands rising dramatically above emerald waters"
+                     onmouseover="upDate(this)"
+                     onmouseleave="unDo()"
+                     onfocus="upDate(this)"
+                     onblur="unDo()">
+
+                <img class="preview"
+                     src="images/hoian_ancient_town.jpg"
+                     alt="Hoi An Ancient Town adorned with glowing traditional silk lanterns along the river"
+                     onmouseover="upDate(this)"
+                     onmouseleave="unDo()"
+                     onfocus="upDate(this)"
+                     onblur="unDo()">
+
+                <img class="preview"
+                     src="images/hue_citadel.jpg"
+                     alt="Hue Imperial Citadel showcasing majestic historic Nguyen Dynasty architecture and gates"
+                     onmouseover="upDate(this)"
+                     onmouseleave="unDo()"
+                     onfocus="upDate(this)"
+                     onblur="unDo()">
+
+                <img class="preview"
+                     src="images/ninh_binh.jpg"
+                     alt="Ninh Binh Trang An scenic landscape with limestone karst peaks and winding rivers"
+                     onmouseover="upDate(this)"
+                     onmouseleave="unDo()"
+                     onfocus="upDate(this)"
+                     onblur="unDo()">
+
+                <img class="preview"
+                     src="images/phong_nha.jpg"
+                     alt="Phong Nha-Ke Bang cave entrance with underground river and ancient stalactites"
+                     onmouseover="upDate(this)"
+                     onmouseleave="unDo()"
+                     onfocus="upDate(this)"
+                     onblur="unDo()">
+
+                <img class="preview"
+                     src="images/dalat_highlands.jpg"
+                     alt="Da Lat Highlands with rolling pine-covered hills and morning mist over tea hills"
+                     onmouseover="upDate(this)"
+                     onmouseleave="unDo()"
+                     onfocus="upDate(this)"
+                     onblur="unDo()">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <h2>About this Project</h2>
+            <div class="footer-meta">
+                <span><strong>Author:</strong> thntue</span>
+                <span><strong>Course:</strong> Interactivity with JavaScript</span>
+                <span><strong>Specialization:</strong> Web Design for Everybody (University of Michigan / Coursera)</span>
+            </div>
+            <div class="footer-badges">
+                <span class="badge">W3C HTML5 Validated</span>
+                <span class="badge">WAVE Accessibility Verified</span>
+                <span class="badge">Axe DevTools Tested</span>
+                <span class="badge">WCAG 2.1 AAA Compliant</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
